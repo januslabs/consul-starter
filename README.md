@@ -1,15 +1,24 @@
-consul registration  and discovery java client using spring cloud commons and Consul client from OrbitzWorldwide to run on your enterprise servers
+Consul Starter for your services
+================================
+consul registration  and discovery java client using spring cloud commons, spring boot and Consul client from OrbitzWorldwide to run on your enterprise servers. Starter auto register your service with consul,running locally or remotely as specified in the application.properties.
 
-== Building
+Required Frameworks
+===================
+Spring boot
+Jersey Jax-RS
+Consul-Client
 
-:jdkversion: 1.8
+Installation
+=============
+https://www.consul.io/intro/getting-started/install.html
 
-=== Basic Compile and Test
+Building
+==========
+Java Version: 1.8
 
-To build the source you will need to install JDK {jdkversion}.
-----
+Basic Compile and Test
+======================
 $ ./mvn clean install
-----
-=======
+
 
 
