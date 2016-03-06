@@ -1,10 +1,12 @@
+<a href='https://bintray.com/nandhusriram/consul-starter/consul-starter/_latestVersion'><img src='https://api.bintray.com/packages/nandhusriram/consul-starter/consul-starter/images/download.svg'></a>
+
+
 Consul Starter for your services
 ================================
 consul registration  and discovery java client using spring cloud commons, spring boot and Consul client from OrbitzWorldwide to run on your enterprise servers. Starter auto register your service with consul,running locally or remotely as specified in the application.properties.
 
 TODO: Retrieve the server port and application name from the server(Tomcat) directly , instead of application.properties
 
-<a href='https://bintray.com/nandhusriram/consul-starter/consul-starter/_latestVersion'><img src='https://api.bintray.com/packages/nandhusriram/consul-starter/consul-starter/images/download.svg'></a>
 
 Required Frameworks
 ===================
