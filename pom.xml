@@ -11,6 +11,9 @@
 		<consul.client.version>0.10.0</consul.client.version>
 		<spring-cloud-commons.version>1.0.5.RELEASE</spring-cloud-commons.version>
 		<java.version>1.8</java.version>
+		<maven-source-plugin.version>3.0.0</maven-source-plugin.version>
+		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+		<maven-site-plugin.version>2.8.1</maven-site-plugin.version>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -139,7 +142,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${maven-source-plugin.version}</version><!--$NO-MVN-MAN-VER$-->
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -149,6 +152,16 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version><!--$NO-MVN-MAN-VER$-->
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${maven-site-plugin.version}</version>
 			</plugin>
 		</plugins>
 	</build>
