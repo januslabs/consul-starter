@@ -16,6 +16,13 @@ Consul-Client
 
 Installation
 =============
+
+The easiest way to get started with this starter project is to fork, clone or download from the link below.
+
+git clone https://github.com/januslabs/consul-starter.git 
+
+You will also need to install Consul. This starter project assumes that you have a basic understanding of Consul's operations.
+
 https://www.consul.io/intro/getting-started/install.html
 
 Bintray:
