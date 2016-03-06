@@ -4,6 +4,8 @@ consul registration  and discovery java client using spring cloud commons, sprin
 
 TODO: Retrieve the server port and application name from the server(Tomcat) directly , instead of application.properties
 
+<a href='https://bintray.com/nandhusriram/consul-starter/consul-starter/_latestVersion'><img src='https://api.bintray.com/packages/nandhusriram/consul-starter/consul-starter/images/download.svg'></a>
+
 Required Frameworks
 ===================
 Spring boot
@@ -16,7 +18,7 @@ https://www.consul.io/intro/getting-started/install.html
 
 Bintray:
 
-Grab the latest binary (0.0.1) [here] (https://bintray.com/artifact/download/nandhusriram/consul-starter/consul-starter-0.0.1.jar).
+Grab the latest binary (0.0.1) [here] (https://bintray.com/artifact/download/nandhusriram/consul-starter/org/januslabs/consul-starter/0.0.1/consul-starter-0.0.1.jar).
 
 Building
 ==========
