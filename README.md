@@ -22,8 +22,10 @@ Basic Compile and Test
 ======================
 $ mvn clean install
 
-Maven
-=======
+###Maven:
+
+```xml
+
 <dependencies>
     <dependency>
      	<groupId>org.januslabs</groupId>
@@ -43,7 +45,7 @@ Maven
         <url>http://jcenter.bintray.com</url>
     </repository>
 </repositories>
-
+```
 Configuration
 =============
 Please add the consul-starter jar to your api/service application, update the application properties with url , appname , server port and context path.
