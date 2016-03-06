@@ -3,10 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.januslabs</groupId>
 	<artifactId>consul-starter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<properties>
 		<jackson.version>2.7.1</jackson.version>
 		<jersey.version>2.22.2</jersey.version>
+		<spring.boot.version>1.3.3.RELEASE</spring.boot.version>
+		<consul.client.version>0.10.0</consul.client.version>
+		<spring-cloud-commons.version>1.0.5.RELEASE</spring-cloud-commons.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -37,7 +41,7 @@
 		<dependency>
 			<groupId>com.orbitz.consul</groupId>
 			<artifactId>consul-client</artifactId>
-			<version>0.10.0</version>
+			<version>${consul.client.version}</version>
 			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
@@ -107,7 +111,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-commons</artifactId>
-			<version>1.0.5.RELEASE</version>
+			<version>${spring-cloud-commons.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>spring-security-crypto</artifactId>
@@ -128,11 +132,21 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+    <repository>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>central</id>
+        <name>bintray</name>
+        <url>http://jcenter.bintray.com</url>
+    </repository>
+</repositories>
 
 </project>

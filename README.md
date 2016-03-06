@@ -22,6 +22,28 @@ Basic Compile and Test
 ======================
 $ mvn clean install
 
+Maven
+=======
+<dependencies>
+    <dependency>
+     	<groupId>org.januslabs</groupId>
+		<artifactId>consul-starter</artifactId>
+		<version>0.0.1</version>
+    </dependency>
+    <!-- include spring boot,Jersey, Orbitzworldwide consul client -->
+</dependencies>
+
+<repositories>
+    <repository>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>central</id>
+        <name>bintray</name>
+        <url>http://jcenter.bintray.com</url>
+    </repository>
+</repositories>
+
 Configuration
 =============
 Please add the consul-starter jar to your api/service application, update the application properties with url , appname , server port and context path.
