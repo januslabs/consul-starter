@@ -14,6 +14,10 @@ Installation
 =============
 https://www.consul.io/intro/getting-started/install.html
 
+Bintray:
+
+Grab the latest binary (0.0.1) [here] (https://bintray.com/artifact/download/nandhusriram/consul-starter/consul-starter-0.0.1.jar).
+
 Building
 ==========
 Java Version: 1.8
@@ -57,7 +61,6 @@ consul.url : http://localhost:8500
 spring.application.name=mygreat-api-service
 server.port=8200
 server.context-path=/apis
-
 
 
 
