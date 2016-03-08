@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
 
+import org.januslabs.consul.tomcat.TomcatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.AbstractDiscoveryLifecycle;
 
@@ -42,7 +43,15 @@ public class ConsulDiscoveryLifecycle extends AbstractDiscoveryLifecycle {
     } catch (UnknownHostException e) {
       address = "localhost";
     }
-    Integer port = new Integer(getEnvironment().getProperty("server.port"));
+    Integer port;
+    try {
+      port = new TomcatUtils().getContainerPort();
+    } catch (Exception e) {
+      
+      e.printStackTrace();
+      port=new Integer(getEnvironment().getProperty("server.port"));
+    }
+        
     String contextPath = getEnvironment().getProperty("server.context-path");
     ttlConfig.setPort(port);
     List<Registration.RegCheck> regChecks = ImmutableList.of(

@@ -27,14 +27,14 @@ public class ConsulAutoConfiguration {
 
   @Bean
   @ConditionalOnMissingBean
-  public Consul consulClient(String url) {
-    log.info("Connecting to consul server {}, {}, {}", consulProperties().getHost(),
-        consulProperties().getUrl(), consulProperties().getPort());
-    if (consulProperties().getUrl() != null) {
-      return Consul.builder().withUrl(consulProperties().getUrl()).build();
+  public Consul consulClient(ConsulProperties consulProperties) {
+    log.info("Connecting to consul server {}, {}, {}", consulProperties.getHost(),
+        consulProperties.getUrl(), consulProperties.getPort());
+    if (consulProperties.getUrl() != null) {
+      return Consul.builder().withUrl(consulProperties.getUrl()).build();
     } else {
       HostAndPort hostAndPort =
-          HostAndPort.fromParts(consulProperties().getHost(), consulProperties().getPort());
+          HostAndPort.fromParts(consulProperties.getHost(), consulProperties.getPort());
       return Consul.builder().withHostAndPort(hostAndPort).build();
     }
 
