@@ -47,11 +47,11 @@ public class ConsulDiscoveryLifecycle extends AbstractDiscoveryLifecycle {
     try {
       port = new TomcatUtils().getContainerPort();
     } catch (Exception e) {
-      
+
       e.printStackTrace();
-      port=new Integer(getEnvironment().getProperty("server.port"));
+      port = new Integer(getEnvironment().getProperty("server.port"));
     }
-        
+
     String contextPath = getEnvironment().getProperty("server.context-path");
     ttlConfig.setPort(port);
     List<Registration.RegCheck> regChecks = ImmutableList.of(
@@ -68,8 +68,26 @@ public class ConsulDiscoveryLifecycle extends AbstractDiscoveryLifecycle {
 
   @Override
   protected void registerManagement() {
+    String address = "localhost";
+
+    try {
+      address = InetAddress.getLocalHost().getHostAddress();
+
+    } catch (UnknownHostException e) {
+      address = "localhost";
+    }
+
+    Integer port;
+    try {
+      port = new TomcatUtils().getContainerPort();
+    } catch (Exception e) {
+
+      e.printStackTrace();
+      port = new Integer(getEnvironment().getProperty("management.port"));
+    }
+
     Registration management = ImmutableRegistration.builder().id(getManagementServiceId())
-        .name(getManagementServiceName()).port(getManagementPort())
+        .address(address).name(getManagementServiceName()).port(port)
         .tags(consulProperties.getManagementTags()).build();
 
     register(management);
@@ -99,7 +117,9 @@ public class ConsulDiscoveryLifecycle extends AbstractDiscoveryLifecycle {
 
   @Override
   protected void deregisterManagement() {
-    deregister(getManagementServiceName());
+    if (shouldRegisterManagement()) {
+      deregister(getManagementServiceName());
+    }
   }
 
   private void deregister(String serviceId) {

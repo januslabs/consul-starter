@@ -44,6 +44,9 @@ public class HeartbeatProperties {
     log.debug("Computed heartbeatInterval: " + heartbeatInterval);
   }
 
+  /*
+   * Every 20 seconds
+   */
   protected Period computeHearbeatInterval() {
 
     double interval = ttlValue * intervalRatio;

@@ -31,7 +31,7 @@ public class TtlScheduler {
    * Add a service to the checks loop.
    */
   public void add(final Registration service) {
-    log.info("Adding Service to Scheduled" + service.toString());
+    log.info("Adding Service to Scheduled {}", service);
     serviceHeartbeats.put(service.getId(), EXPIRED_DATE);
   }
 
@@ -39,20 +39,32 @@ public class TtlScheduler {
     serviceHeartbeats.remove(serviceId);
   }
 
-  @Scheduled(initialDelay = 0, fixedRateString = "15000")
+  @Scheduled(initialDelay = 0, fixedRateString = "20000")
   protected void heartbeatServices() throws NotRegisteredException {
     for (String serviceId : serviceHeartbeats.keySet()) {
       DateTime latestHeartbeatDoneForService = serviceHeartbeats.get(serviceId);
       if (latestHeartbeatDoneForService.plus(configuration.getHeartbeatInterval())
           .isBefore(DateTime.now())) {
-        /*
-         * String checkId = serviceId; if (!checkId.startsWith("service:")) { checkId = "service:" +
-         * checkId; }
-         */
+
+        log.info("Service ID check {}", serviceId);
+
         client.agentClient().pass(serviceId + ":2");
-        log.debug("Sending consul heartbeat for: " + serviceId);
+
+        /*
+         * Map<String, HealthCheck> healthMaps = client.agentClient().getChecks();
+         * healthMaps.entrySet().stream() .filter(healthcheck -> client.agentClient()
+         * .isRegistered(healthcheck.getValue().getCheckId())) .forEach(rethrow(entry ->
+         * client.agentClient().pass(entry.getValue().getCheckId())));
+         * healthMaps.entrySet().stream() .filter(healthcheck -> client.agentClient()
+         * .isRegistered(healthcheck.getValue().getCheckId())) .distinct().map(Map.Entry::getValue)
+         * .forEach(rethrow(entry -> client.agentClient().pass(entry.getCheckId())));
+         */
+
+        log.info("Sending consul heartbeat for: " + serviceId);
         serviceHeartbeats.put(serviceId, DateTime.now());
       }
     }
   }
+
+
 }
